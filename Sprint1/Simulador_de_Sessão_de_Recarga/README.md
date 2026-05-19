@@ -176,7 +176,7 @@ Custo da sessão  = 30 kWh × R$ 2,16 = R$ 64,80
 
 ### 4. Relatório Final
 
-Ao concluir a recarga, o sistema exibe um relatório completo com:
+Ao concluir a recarga, o sistema exibe um relatório completo no console com:
 
 - Dados do usuário e do veículo
 - Horário de início e fim
@@ -251,12 +251,12 @@ carregando = setInterval(() => {
 
 ## Tecnologias Utilizadas
 
-- **HTML5** — estrutura semântica das páginas
-- **CSS3** — estilização com variáveis CSS, grid layout e responsividade
-- **JavaScript (ES6+)** — toda a lógica de simulação, validação e tarifação
+- **HTML** — estrutura semântica das páginas
+- **CSS** — estilização com variáveis CSS, grid layout e responsividade
+- **JavaScript** — toda a lógica de simulação, validação e tarifação
 - **Lucide Icons** — biblioteca de ícones via CDN
-- **Google Fonts (Inter)** — tipografia
+- **Google Fonts** — tipografia
 
 ---
 
-*© 2026 GOODWE Technologies Co., Ltd. Projeto acadêmico — DSA Sprint 1.*
+*DSA Sprint 1.*
