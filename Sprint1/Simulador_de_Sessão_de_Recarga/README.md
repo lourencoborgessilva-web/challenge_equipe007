@@ -25,7 +25,7 @@ O projeto é composto por três arquivos principais:
 3. Preencha o formulário com os dados da sessão
 4. Clique em **"Iniciar sessão de recarga"**
 5. Na tela seguinte, clique em **"Iniciar"** para começar a simulação
-6. Acompanhe o progresso e aguarde a conclusão — ou clique em **"Finalizar sessão"** manualmente
+6. O relatorio final além de esta na tela, esta no console junto com os outros historicos 
 
 > Não é necessário instalar nenhuma dependência ou servidor. O projeto roda direto no navegador.
 
@@ -122,7 +122,6 @@ for (let pct = bateriaSimulada; pct < bateriaDesejada; pct += passosPorSegundo) 
 |---|---|
 | Iniciar | Inicia ou retoma a recarga |
 | Pausar | Pausa o intervalo de simulação |
-| Finalizar sessão | Encerra e exibe o relatório |
 
 ---
 
