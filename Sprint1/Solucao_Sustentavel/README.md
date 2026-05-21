@@ -14,11 +14,11 @@ A proposta parte do ecossistema GoodWe/FIAP e busca transformar a recarga veicul
 
 | Nome | RM |
 |---|---|
-| Tiago | RM: |
-| Caio | RM: |
-| Davi | RM: |
-| Lourenço | RM: |
-| Gustavo | RM: |
+| Tiago Pimentel Muniz| RM: 574148|
+| Caio César Portela França | RM: 573127|
+| Davi Teodoro Novais | RM: 571022|
+| Lourenço Borges da Silva | RM: 569515|
+| Gustavo Curis de Francisco | RM: 569704|
 
 ---
 
@@ -71,8 +71,6 @@ A solução busca conectar:
 - recomendações inteligentes;
 - simulações técnicas para cenários comerciais.
 
-A proposta não depende de prometer integração real imediata com recursos indisponíveis. O projeto segue a lógica do **possível versus ideal**: usar dados reais quando disponíveis, simular com rigor quando necessário e documentar como a solução poderia evoluir em um cenário produtivo.
-
 ---
 
 ## Como o sistema funcionaria
@@ -98,3 +96,257 @@ Classificação energética, controle de demanda, fila, tarifa e recomendações
 ↓
 Interfaces
 PWA ou app para usuário final, dashboard para gestor e relatórios operacionais
+```
+
+---
+
+## Sustentabilidade aplicada
+
+A sustentabilidade do projeto não se limita ao fato de o veículo ser elétrico. A proposta considera a gestão inteligente da energia usada na recarga.
+
+O sistema poderá utilizar dados de geração fotovoltaica, consumo do local e estado da bateria para:
+
+- recomendar horários de recarga com maior disponibilidade solar;
+- incentivar o uso da recarga em períodos de menor impacto energético;
+- aplicar tarifas sustentáveis ou descontos em horários favoráveis;
+- reduzir potência em momentos críticos;
+- evitar sobrecarga da rede elétrica;
+- preservar reserva mínima da bateria estacionária;
+- gerar indicadores de sustentabilidade para o gestor.
+
+Exemplo:
+
+Se houver alta geração solar durante determinado período do dia, o sistema pode recomendar esse horário ao usuário ou aplicar uma tarifa mais vantajosa. Se o local estiver em horário de pico, o sistema pode limitar novas sessões, colocar usuários em fila ou sugerir horários alternativos.
+
+Essa abordagem melhora o aproveitamento da energia renovável, reduz dependência da rede em momentos críticos e aumenta a eficiência operacional do eletroposto.
+
+---
+
+## Principais módulos da solução
+
+### 1. Arquitetura com camadas e adapters
+
+O sistema é pensado em camadas para evitar dependência direta de uma tecnologia específica. A arquitetura separa infraestrutura física, dados, backend/simulador, regras, interfaces e integrações futuras.
+
+Adapters podem representar integrações com:
+
+- SEMS+;
+- MODBUS;
+- API EV futura;
+- OCPP futuro;
+- gateways de pagamento;
+- bases simuladas.
+
+Essa estrutura permite evolução gradual do projeto.
+
+---
+
+### 2. Orquestrador de demanda
+
+O orquestrador analisa a condição energética do local e classifica o estado do sistema em:
+
+- **favorável**: há margem para liberar novas recargas;
+- **alerta**: o local está próximo do limite;
+- **crítico**: novas recargas devem ser bloqueadas ou pausadas.
+
+Com base nisso, o sistema pode liberar, limitar, reduzir potência, colocar em fila ou bloquear sessões.
+
+---
+
+### 3. Gestão sustentável de energia
+
+A camada sustentável usa dados de energia solar, bateria e consumo local para melhorar o uso dos recursos disponíveis.
+
+Ela pode:
+
+- recomendar horários de recarga;
+- aplicar tarifa sustentável;
+- priorizar energia solar quando disponível;
+- usar bateria dentro de limites seguros;
+- reduzir potência em horários críticos;
+- sugerir horários alternativos.
+
+---
+
+### 4. Tarifação e pagamento
+
+Como o HCA G2 não possui billing nativo, o ChargeGrid propõe uma camada externa ou simulada de tarifação.
+
+Essa camada pode calcular:
+
+- valor por kWh;
+- taxa por tempo;
+- tarifa de pico;
+- tarifa ponderada;
+- taxa de ociosidade;
+- valor estimado da sessão;
+- comprovante.
+
+O objetivo é tornar a recarga comercial mais transparente e viável.
+
+---
+
+### 5. Interface do usuário e dashboard do gestor
+
+Para o usuário final, a interface deve mostrar:
+
+- disponibilidade;
+- preço;
+- tempo estimado;
+- status da sessão;
+- energia consumida;
+- custo estimado;
+- posição na fila;
+- comprovante.
+
+Para o gestor, o dashboard deve mostrar:
+
+- sessões realizadas;
+- kWh consumidos;
+- receita estimada;
+- horários de pico;
+- uso de energia solar;
+- taxa de ocupação;
+- falhas;
+- alertas operacionais.
+
+---
+
+### 6. IA e decisão inteligente
+
+A inteligência artificial será tratada como apoio à decisão, não como controle absoluto do sistema.
+
+A IA pode ajudar a:
+
+- prever horários de pico;
+- estimar demanda futura;
+- recomendar tarifas;
+- sugerir horários de recarga;
+- identificar risco de fila;
+- apoiar manutenção preditiva;
+- gerar relatórios inteligentes.
+
+---
+
+### 7. Segurança e confiabilidade
+
+O sistema deve considerar segurança desde sua concepção.
+
+Pontos importantes:
+
+- autenticação de usuários;
+- perfis de acesso;
+- logs;
+- validação de QR Code;
+- proteção contra cobrança duplicada;
+- separação entre dados pessoais, financeiros e operacionais;
+- tratamento de falhas;
+- confiabilidade do dashboard;
+- controle de permissões.
+
+---
+## Viabilidade de negócio
+
+O ChargeGrid pode gerar valor para diferentes atores:
+
+### Estabelecimento comercial
+
+- atrai clientes com serviço de recarga;
+- melhora imagem sustentável;
+- acompanha uso dos carregadores;
+- visualiza receita estimada;
+- reduz risco de sobrecarga.
+
+### Usuário final
+
+- entende preço antes da recarga;
+- acompanha status da sessão;
+- recebe comprovante;
+- tem mais previsibilidade;
+- pode ser orientado a carregar em horários mais sustentáveis.
+
+### Operador ou gestor
+
+- acompanha demanda;
+- identifica horários de pico;
+- analisa falhas;
+- planeja expansão;
+- melhora eficiência operacional.
+
+### GoodWe/ecossistema energético
+
+- fortalece a integração entre carregadores, energia solar, bateria, SEMS+ e gestão inteligente;
+- amplia a possibilidade de uso comercial das soluções;
+- conecta hardware energético a uma camada digital de valor.
+
+---
+
+## Tecnologias e conceitos envolvidos
+
+- GoodWe HCA G2;
+- SEMS+;
+- SolarGo;
+- smart meter;
+- bateria estacionária;
+- geração fotovoltaica;
+- carregamento AC;
+- kW e kWh;
+- controle de demanda;
+- MODBUS;
+- RS-485;
+- OCPP como referência futura;
+- QR Code/PWA;
+- dashboard;
+- tarifação dinâmica;
+- IA preditiva;
+- segurança e LGPD;
+- simulação técnica.
+
+---
+
+## Limitações conhecidas
+
+O projeto reconhece limitações importantes:
+
+- o HCA G2 atual não possui OCPP;
+- o HCA G2 não possui billing nativo;
+- RFID é autorização local, não solução completa de pagamento;
+- a API EV Charger não será disponibilizada aos alunos;
+- o acesso ao SEMS+ tende a ser principalmente visual;
+- dados comerciais reais podem não estar disponíveis;
+- parte da solução precisará ser simulada.
+
+---
+
+## Próximos passos
+
+Para as próximas etapas, o grupo pretende evoluir a proposta para uma prova de conceito funcional.
+
+Possíveis entregas futuras:
+
+- protótipo de interface do usuário;
+- dashboard do gestor;
+- simulador de sessões de recarga;
+- motor de regras para estados favorável, alerta e crítico;
+- cálculo de tarifa;
+- fila de espera;
+- indicadores de sustentabilidade;
+- recomendação de horário de recarga;
+- estruturação do projeto em Kanban;
+- documentação técnica no GitHub.
+
+---
+
+## Pitch do projeto
+
+Vídeo pitch: 
+
+---
+
+## Conclusão
+
+O ChargeGrid Intelligence propõe uma camada inteligente para gestão sustentável de eletropostos comerciais. A solução busca conectar mobilidade elétrica, energia solar, bateria, controle de demanda, tarifação e dados operacionais.
+
+A proposta é relevante porque o avanço da mobilidade elétrica exige mais do que carregadores instalados. É necessário gerenciar energia, usuários, cobrança, experiência e sustentabilidade de forma integrada.
+
+Com isso, o projeto contribui para uma visão mais eficiente e sustentável da recarga veicular em ambientes comerciais, alinhada ao ecossistema GoodWe e ao EV Challenge 2026.
