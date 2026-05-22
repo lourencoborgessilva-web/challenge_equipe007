@@ -339,7 +339,7 @@ Possíveis entregas futuras:
 
 ## Pitch do projeto
 
-Vídeo pitch: 
+Vídeo pitch: https://youtu.be/_VgbLmDxla0?si=Y-TmWlP31L-JqOF1
 
 ---
 
