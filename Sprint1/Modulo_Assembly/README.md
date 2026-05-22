@@ -1,3 +1,10 @@
+# Membros
+
+- Davi Teodoro Novais - RM: 571022
+- Lourenco Borges da Silva - RM: 569515
+- Caio César Portela França - RM: 573127
+- Gustavo Curis de Francisco - RM: 569704
+- Tiago Pimentel Muniz - RM: 574148
 # Descrição do Projeto
 
 O projeto do modúlo de controle de baixo nivel para o ChargeGrid  propõe uma solução computacional otimizada para eletropostos de veículos elétricos, utilizando programação em baixo nível (Assembly NASM) e conceitos de arquitetura de computadores para aumentar a eficiência energética do sistema.
